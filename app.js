@@ -3,10 +3,13 @@ const connectDb = require("./config/db");
 connectDb();
 const app = express();
 const cors = require("cors");
-
+const userRouter = require("./routes/userRoute");
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// users route
+app.use("/api", userRouter);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
