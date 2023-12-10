@@ -49,7 +49,7 @@ const updateUser = async (req, res) => {
     const { name, email, phone } = req.body;
     const result = await User.updateOne(
       { _id: userId },
-      { $set: { name: name } },
+      { $set: { name: name, email: email, phone: phone } },
       { upsert: true }
     );
     res.status(201).send({
